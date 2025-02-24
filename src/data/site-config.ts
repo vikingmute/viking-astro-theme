@@ -36,6 +36,18 @@ export type SiteConfig = {
     postsPerPage?: number;
     projectsPerPage?: number;
     locale: 'zh-CN' | 'en-US';
+    giscus: {
+        repo: string;
+        repoId: string;
+        category: string;
+        categoryId: string;
+        mapping: string;
+        strict: string;
+        reactionsEnabled: string;
+        emitMetadata: string;
+        inputPosition: string;
+        theme: string;
+    };
 };
 
 const siteConfig: SiteConfig = {
@@ -118,6 +130,18 @@ const siteConfig: SiteConfig = {
     postsPerPage: 8,
     projectsPerPage: 8,
     locale: 'zh-CN',
+    giscus: {
+        repo: 'vikingmute/blog',
+        repoId: 'MDEwOlJlcG9zaXRvcnkyMTMyNzkzOTk=',
+        category: 'Blog Post Comments',
+        categoryId: 'DIC_kwDODLZip84CnESC',
+        mapping: 'pathname',
+        strict: '0',
+        reactionsEnabled: '1',
+        emitMetadata: '0',
+        inputPosition: 'bottom',
+        theme: 'noborder_light'
+    }
 };
 
 export default siteConfig;
