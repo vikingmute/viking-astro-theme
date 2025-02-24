@@ -2,6 +2,10 @@
 import { type CollectionEntry } from 'astro:content';
 import ArrowRight from '../icons/ArrowRight.astro';
 import FormattedDate from './FormattedDate.astro';
+import { locales } from '../i18n';
+import siteConfig from '../data/site-config';
+
+const i18n = locales[siteConfig.locale];
 
 type Props = { post: CollectionEntry<'blog'>; class?: string; headingLevel?: 'h2' | 'h3' };
 
@@ -24,7 +28,7 @@ const TitleTag = headingLevel;
                     <>
                         {' '}
                         <span>
-                            (Updated on <FormattedDate date={updatedDate} />)
+                            ({i18n.components.post.updated} <FormattedDate date={updatedDate} />)
                         </span>
                     </>
                 )
@@ -33,6 +37,7 @@ const TitleTag = headingLevel;
         {excerpt && <div class="mt-3 text-sm leading-normal">{excerpt}</div>}
     </div>
     <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
-        Read Post <ArrowRight class="fill-current w-4 h-4" />
+        {i18n.components.post.readMore}
+        <ArrowRight class="fill-current w-4 h-4" />
     </div>
 </a>

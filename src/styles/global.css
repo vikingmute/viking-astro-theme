@@ -1,12 +1,28 @@
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/newsreader';
-@import '@fontsource-variable/newsreader/wght-italic.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
+    /* 定义字体加载策略 */
+    @font-face {
+        font-family: 'Inter Variable';
+        src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+        font-display: swap;
+    }
+
+
+    /* 分别声明不同字重的 Noto Serif SC */
+    @font-face {
+        font-family: 'Noto Serif SC';
+        src: url('@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-500-normal.woff2') format('woff2');
+        font-weight: 500;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Noto Serif SC';
+        src: url('@fontsource/noto-serif-sc/files/noto-serif-sc-chinese-simplified-700-normal.woff2') format('woff2');
+        font-weight: 700;
+        font-display: swap;
+    }
+
     :root {
         --color-text-main: 23 23 23; /* #171717 */
         --color-bg-main: 242 241 236; /* #F2F1EC */
@@ -51,4 +67,10 @@
         --color-border-main: 243 239 230;
     }
     */
+
+
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

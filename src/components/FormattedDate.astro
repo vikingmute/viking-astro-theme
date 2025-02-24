@@ -1,4 +1,6 @@
 ---
+import siteConfig from '../data/site-config';
+
 type Props = { date: Date };
 
 const { date } = Astro.props;
@@ -6,7 +8,7 @@ const { date } = Astro.props;
 
 <time datetime={date.toISOString()}>
     {
-        date.toLocaleDateString('en-us', {
+        date.toLocaleDateString(siteConfig.locale, {
             year: 'numeric',
             month: 'long',
             day: 'numeric'

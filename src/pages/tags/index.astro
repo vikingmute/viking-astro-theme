@@ -4,7 +4,10 @@ import ArrowRight from '../../icons/ArrowRight.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Subscribe from '../../components/Subscribe.astro';
 import { sortItemsByDateDesc, getAllTags, getPostsByTag } from '../../utils/data-utils';
+import siteConfig from '../../data/site-config';
+import { locales } from '../../i18n';
 
+const i18n = locales[siteConfig.locale];
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const tags = getAllTags(posts).sort((tagA, tagB) => {
     const postCountTagA = getPostsByTag(posts, tagA.id).length;
@@ -13,12 +16,8 @@ const tags = getAllTags(posts).sort((tagA, tagB) => {
 });
 ---
 
-<BaseLayout
-    title="Tags"
-    description="Explore tag directory for easy navigation and discovery. Find a wide range of topics, articles, and insights organized by tags, making it effortless to locate the content that interests you most."
-    showHeader={false}
->
-    <h1 class="mb-12 text-2xl font-serif italic sm:mb-16 sm:text-4xl">All Tags</h1>
+<BaseLayout title={i18n.pages.tags.title} description={i18n.pages.tags.description} showHeader={false}>
+    <h1 class="mb-12 text-2xl font-serif italic sm:mb-16 sm:text-4xl">{i18n.pages.tags.title}</h1>
     {
         tags.map((tag) => {
             const postCount = getPostsByTag(posts, tag.id).length;
@@ -29,11 +28,11 @@ const tags = getAllTags(posts).sort((tagA, tagB) => {
                             {tag.name}
                         </h2>
                         <div class="mt-1 text-sm leading-normal">
-                            {postCount} {postCount === 1 ? 'post' : 'posts'}
+                            {postCount} {postCount === 1 ? i18n.pages.tags.postCount.one : i18n.pages.tags.postCount.other}
                         </div>
                     </div>
                     <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
-                        View Tag Archive <ArrowRight class="fill-current w-4 h-4" />
+                        {i18n.pages.tags.viewArchive} <ArrowRight class="fill-current w-4 h-4" />
                     </div>
                 </a>
             );

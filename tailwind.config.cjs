@@ -6,7 +6,10 @@ module.exports = {
     theme: {
         fontFamily: {
             sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
-            serif: ['Newsreader Variable', ...defaultTheme.fontFamily.serif]
+            serif: [
+                'Noto Serif SC',
+                ...defaultTheme.fontFamily.serif
+            ]
         },
         extend: {
             textColor: {
@@ -24,6 +27,7 @@ module.exports = {
                     css: {
                         '--tw-prose-body': theme('textColor.main / 100%'),
                         '--tw-prose-headings': theme('textColor.main / 100%'),
+                        '--tw-prose-headings-font-family': theme('fontFamily.serif').join(','),
                         '--tw-prose-lead': theme('textColor.main / 100%'),
                         '--tw-prose-links': theme('textColor.main / 100%'),
                         '--tw-prose-bold': theme('textColor.main / 100%'),
@@ -32,12 +36,19 @@ module.exports = {
                         '--tw-prose-hr': theme('borderColor.main / 100%'),
                         '--tw-prose-quotes': theme('textColor.main / 100%'),
                         '--tw-prose-quote-borders': theme('borderColor.main / 100%'),
+                        '--tw-prose-quotes-font-family': theme('fontFamily.serif').join(','),
                         '--tw-prose-captions': theme('textColor.main / 100%'),
                         '--tw-prose-code': theme('textColor.main / 100%'),
                         '--tw-prose-pre-code': theme('colors.zinc.100'),
                         '--tw-prose-pre-bg': theme('colors.zinc.800'),
                         '--tw-prose-th-borders': theme('borderColor.main / 100%'),
-                        '--tw-prose-td-borders': theme('borderColor.main / 100%')
+                        '--tw-prose-td-borders': theme('borderColor.main / 100%'),
+                        'h1, h2, h3, h4, h5, h6': {
+                            fontFamily: 'var(--tw-prose-headings-font-family)'
+                        },
+                        'blockquote': {
+                            fontFamily: 'var(--tw-prose-quotes-font-family)',
+                        }
                     }
                 },
                 DEFAULT: {

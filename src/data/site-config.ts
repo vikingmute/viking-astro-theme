@@ -35,11 +35,16 @@ export type SiteConfig = {
     subscribe?: Subscribe;
     postsPerPage?: number;
     projectsPerPage?: number;
+    locale: 'zh-CN' | 'en-US';
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Dante',
-    subtitle: 'Minimal Astro.js theme',
+    title: 'Viking',
+    subtitle: '一个创造者的故事',
+    logo: {
+        src: '/logo.svg',
+        alt: 'Viking'
+    },
     description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
     image: {
         src: '/dante-preview.jpg',
@@ -47,37 +52,33 @@ const siteConfig: SiteConfig = {
     },
     headerNavLinks: [
         {
-            text: 'Home',
+            text: '首页',
             href: '/'
         },
         {
-            text: 'Projects',
-            href: '/projects'
-        },
-        {
-            text: 'Blog',
+            text: '博客',
             href: '/blog'
         },
         {
-            text: 'Tags',
+            text: '作品',
+            href: '/projects'
+        },
+        {
+            text: '标签',
             href: '/tags'
         }
     ],
     footerNavLinks: [
         {
-            text: 'About',
+            text: '关于',
             href: '/about'
         },
         {
-            text: 'Contact',
+            text: '联系',
             href: '/contact'
         },
         {
-            text: 'Terms',
-            href: '/terms'
-        },
-        {
-            text: 'Download theme',
+            text: '主题',
             href: 'https://github.com/JustGoodUI/dante-astro-theme'
         }
     ],
@@ -96,18 +97,18 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Hi There & Welcome to My Corner of the Web!',
-        text: "I'm **Ethan Donovan**, a web developer at Amazing Studio, dedicated to the realms of collaboration and artificial intelligence. My approach involves embracing intuition, conducting just enough research, and leveraging aesthetics as a catalyst for exceptional products. I have a profound appreciation for top-notch software, visual design, and the principles of product-led growth. Feel free to explore some of my coding endeavors on <a href='https://github.com/JustGoodUI/dante-astro-theme'>GitHub</a> or follow me on <a href='https://twitter.com/justgoodui'>Twitter/X</a>.",
+        // title: 'Hi There & Welcome to My Corner of the Web!',
+        text: "我叫 Viking, 是一名生活在上海的全栈开发工程师，也是一位自由职业者。 我创建了<a href='https://easycv.cn'>简单简历</a>, 五分钟打造程序员的金牌简历。 <a href='/about'>阅读更多...</a> ",
         image: {
-            src: '/hero.jpeg',
+            src: '/avatar.jpg',
             alt: 'A person sitting at a desk in front of a computer'
         },
-        actions: [
-            {
-                text: 'Get in Touch',
-                href: '/contact'
-            }
-        ]
+        // actions: [
+        //     {
+        //         text: '关于我',
+        //         href: '/about'
+        //     }
+        // ]
     },
     subscribe: {
         title: 'Subscribe to Dante Newsletter',
@@ -115,7 +116,8 @@ const siteConfig: SiteConfig = {
         formUrl: '#'
     },
     postsPerPage: 8,
-    projectsPerPage: 8
+    projectsPerPage: 8,
+    locale: 'zh-CN',
 };
 
 export default siteConfig;

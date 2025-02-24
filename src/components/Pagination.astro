@@ -1,33 +1,46 @@
 ---
+import type { Page } from 'astro';
+import { locales } from '../i18n';
+import siteConfig from '../data/site-config';
 import ArrowLeft from '../icons/ArrowLeft.astro';
 import ArrowRight from '../icons/ArrowRight.astro';
 import IconButton from './IconButton.astro';
 
+const i18n = locales[siteConfig.locale];
+
+interface Props {
+    page: Page;
+    class?: string;
+}
+
 const { page, class: className } = Astro.props;
 ---
 
-<nav aria-label="Pagination" class:list={['px-12 py-2 relative text-center', className]}>
-    {
-        page.url.prev && (
-            <IconButton
-                class="absolute left-0 top-1/2 -translate-y-1/2"
-                href={page.url.prev}
-                aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
-            >
-                <ArrowLeft class="w-5 h-5 fill-current" />
-            </IconButton>
-        )
-    }
-    <span class="text-sm" aria-current="page">Page {page.currentPage} of {page.lastPage}</span>
-    {
-        page.url.next && (
-            <IconButton
-                class="absolute right-0 top-1/2 -translate-y-1/2"
-                href={page.url.next}
-                aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
-            >
-                <ArrowRight class="w-5 h-5 fill-current" />
-            </IconButton>
-        )
-    }
+<nav class:list={['flex justify-between', className]} aria-label="Pagination">
+    <div class="flex flex-1 justify-start">
+        {
+            page.url.prev && (
+                <a href={page.url.prev} class="px-4 font-medium hover:underline">
+                    ← {i18n.components.pagination.prev}
+                </a>
+            )
+        }
+    </div>
+    <div class="flex flex-1 justify-center text-center">
+        <span class="px-4">
+            {i18n.components.pagination.page}
+            {page.currentPage}
+            {i18n.components.pagination.of}
+            {page.lastPage}
+        </span>
+    </div>
+    <div class="flex flex-1 justify-end">
+        {
+            page.url.next && (
+                <a href={page.url.next} class="px-4 font-medium hover:underline">
+                    {i18n.components.pagination.next} →
+                </a>
+            )
+        }
+    </div>
 </nav>

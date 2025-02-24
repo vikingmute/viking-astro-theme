@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { locales } from '../i18n';
+import siteConfig from '../data/site-config';
+
+const i18n = locales[siteConfig.locale];
+---
+
+<BaseLayout title={i18n.pages.error.title} description={i18n.pages.error.description}>
+    <div class="text-center">
+        <h1 class="mb-8 text-2xl font-serif italic sm:text-4xl">{i18n.pages.error.heading}</h1>
+        <a class="text-lg hover:underline" href="/">{i18n.pages.error.backHome}</a>
+    </div>
+</BaseLayout>

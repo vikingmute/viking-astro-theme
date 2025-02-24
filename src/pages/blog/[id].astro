@@ -4,9 +4,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import PostPreview from '../../components/PostPreview.astro';
-import Subscribe from '../../components/Subscribe.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
+import { theme } from '../../store/theme';
+import { locales } from '../../i18n';
+import siteConfig from '../../data/site-config';
+
+const i18n = locales[siteConfig.locale];
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
@@ -40,7 +44,7 @@ const { Content } = await render(post);
                         <>
                             {' '}
                             <span>
-                                (Updated on <FormattedDate date={updatedDate} />)
+                                ({i18n.pages.blog.updated} <FormattedDate date={updatedDate} />)
                             </span>
                         </>
                     )
@@ -62,23 +66,63 @@ const { Content } = await render(post);
                     </div>
                 )
             }
-            <Button class="copy-url-button" aria-label="Copy link" data-url={href} data-tooltip-default="Copy link" data-tooltip-success="Copied">Share</Button>
+            <Button
+                class="copy-url-button"
+                aria-label={i18n.pages.blog.copyLink}
+                data-url={href}
+                data-tooltip-default={i18n.pages.blog.copyLink}
+                data-tooltip-success={i18n.pages.blog.copied}
+            >
+                {i18n.pages.blog.share}
+            </Button>
         </div>
     </article>
-    {
-        (prevPost || nextPost) && (
-            <div class="my-16 sm:my-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Read Next</h2>
-                {nextPost && <PostPreview post={nextPost} class="mb-10 sm:mb-12" headingLevel="h3" />}
-                {prevPost && <PostPreview post={prevPost} class="mb-10 sm:mb-12" headingLevel="h3" />}
-            </div>
-        )
-    }
-    <Subscribe class="my-16 sm:my-24" />
+    <section class="giscus mx-auto mt-10 w-full"></section>
 </BaseLayout>
-
+<script
+    src="https://giscus.app/client.js"
+    data-repo="vikingmute/blog"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyMTMyNzkzOTk="
+    data-category="Blog Post Comments"
+    data-category-id="DIC_kwDODLZip84CnESC"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="noborder_light"
+    data-lang={siteConfig.locale}
+    crossorigin="anonymous"
+    async></script>
 <script>
+    import { theme } from '../../store/theme';
+    import { locales } from '../../i18n';
+    import siteConfig from '../../data/site-config';
+
+    const i18n = locales[siteConfig.locale];
+    let unsubscribe: (() => void) | null = null;
+
+    // 监听主题变化，更新 giscus 主题
+    function updateGiscusTheme(theme: 'light' | 'dark') {
+        const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+        if (!iframe) return;
+
+        const message = {
+            giscus: {
+                setConfig: {
+                    theme: theme === 'dark' ? 'noborder_gray' : 'noborder_light'
+                }
+            }
+        };
+
+        iframe.contentWindow?.postMessage(message, 'https://giscus.app');
+    }
+
     document.addEventListener('astro:page-load', () => {
+        if (unsubscribe) {
+            unsubscribe();
+        }
+
         const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
         copyUrlButton?.addEventListener('click', async () => {
             await copyUrl(copyUrlButton);
@@ -90,11 +134,24 @@ const { Content } = await render(post);
 
             await navigator.clipboard.writeText(url);
 
-            button.innerText = 'Copied';
+            button.innerText = i18n.pages.blog.copied;
 
             setTimeout(() => {
                 button.innerText = label;
             }, 2500);
+        }
+
+        // 监听主题变化
+        unsubscribe = theme.subscribe((newTheme) => {
+            updateGiscusTheme(newTheme);
+        });
+    });
+
+    // 在页面卸载时取消订阅
+    document.addEventListener('astro:before-swap', () => {
+        if (unsubscribe) {
+            unsubscribe();
+            unsubscribe = null;
         }
     });
 </script>
