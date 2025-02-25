@@ -1,12 +1,10 @@
-# Dante - Astro & Tailwind CSS Theme by justgoodui.com
+# Dante Fork - Enhanced Astro & Tailwind CSS Theme
 
-Dante is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
+A fork of Dante, a single-author blog and portfolio theme for Astro.js, with additional features and improvements. Original theme by [@JustGoodUI](https://justgoodui.com/).
+
+Featuring a minimal, slick, responsive and content-focused design with enhanced multilingual support and more.
 
 ![Dante Astro.js Theme](public/dante-preview.jpg)
-
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/dante-astro-theme)
-
-If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
 ## Theme Features:
 
@@ -23,6 +21,14 @@ If you click this☝️ button, it will create a new repo for you that looks exa
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+
+## Additional Features in this Fork:
+
+- ✅ Multilingual support
+- ✅ Giscus comment system integration
+- ✅ Noto Serif SC font for better multi-language support
+- ✅ Chinese-friendly slugify function (converts Chinese characters to pinyin)
+- ✅ Redesigned Hero section with a more concise layout
 
 ## Template Integrations
 
@@ -80,6 +86,7 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 
 ## Credits
 
+- Original theme by [Just Good UI](https://justgoodui.com/)
 - Demo content generate with [Chat GPT](https://chat.openai.com/)
 - Images for demo content from [Unsplash](https://unsplash.com/)
 
