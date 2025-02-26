@@ -4,9 +4,9 @@ A fork of Dante, a single-author blog and portfolio theme for Astro.js, with add
 
 Featuring a minimal, slick, responsive and content-focused design with enhanced multilingual support and more.
 
-![Viking Astro.js Theme Home Page](public/preview1.jpg)
+![Viking Astro.js Theme Home Page](public/preview1.png)
 
-![Viking Astro.js Theme Post Page](public/preview2.jpg)
+![Viking Astro.js Theme Post Page](public/preview2.png)
 
 ## Theme Features:
 
