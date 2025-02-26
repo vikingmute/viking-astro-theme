@@ -24,10 +24,10 @@
     }
 
     :root {
-        --color-text-main: 23 23 23; /* #171717 */
-        --color-bg-main: 242 241 236; /* #F2F1EC */
-        --color-bg-muted: 234 233 225; /* #EAE9E1 */
-        --color-border-main: 23 23 23; /* #171717 */
+        --color-text-main: 20 20 19; /* #141413 */
+        --color-bg-main: 250 249 245; /* #faf9f5 */
+        --color-bg-muted: 242 241 236; /* #F2F1EC - 稍微暗一点的背景色 */
+        --color-border-main: 20 20 19; /* #141413 - 保持边框与文字颜色一致 */
     }
     html.dark {
         --color-text-main: 242 241 236; /* #F2F1EC */
@@ -74,3 +74,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 确保 giscus 容器有明确的宽度 */
+.giscus {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* 强制 giscus 内部的 iframe 宽度为 100% */
+.giscus iframe {
+    width: 100% !important;
+    min-width: 100% !important;
+}

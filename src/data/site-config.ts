@@ -1,3 +1,9 @@
+import { locales } from '../i18n';
+
+// 使用默认语言的翻译
+const locale = 'en-US'; // 你的博客默认语言
+const i18n = locales[locale];
+
 export type Image = {
     src: string;
     alt?: string;
@@ -35,7 +41,7 @@ export type SiteConfig = {
     subscribe?: Subscribe;
     postsPerPage?: number;
     projectsPerPage?: number;
-    locale: 'zh-CN' | 'en-US';
+    locale: 'zh-CN' | 'en-US' | 'zh-TW' | 'ja-JP';
     giscus: {
         repo: string;
         repoId: string;
@@ -46,52 +52,47 @@ export type SiteConfig = {
         reactionsEnabled: string;
         emitMetadata: string;
         inputPosition: string;
-        theme: string;
     };
 };
 
 const siteConfig: SiteConfig = {
     title: 'Viking',
-    subtitle: '一个创造者的故事',
+    subtitle: 'Minimal Astro.js theme',
     logo: {
         src: '/logo.svg',
         alt: 'Viking'
     },
-    description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
-    image: {
-        src: '/dante-preview.jpg',
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
-    },
+    description: 'A fork of Dante, a single-author blog and portfolio theme for Astro.js, with additional features and improvements. Original theme by justgoodui.com',
     headerNavLinks: [
         {
-            text: '首页',
+            text: i18n.navigation.home,
             href: '/'
         },
         {
-            text: '博客',
+            text: i18n.navigation.blog,
             href: '/blog'
         },
         {
-            text: '作品',
+            text: i18n.navigation.projects,
             href: '/projects'
         },
         {
-            text: '标签',
+            text: i18n.navigation.tags,
             href: '/tags'
         }
     ],
     footerNavLinks: [
         {
-            text: '关于',
+            text: i18n.navigation.about,
             href: '/about'
         },
         {
-            text: '联系',
+            text: i18n.navigation.contact,
             href: '/contact'
         },
         {
-            text: '主题',
-            href: 'https://github.com/JustGoodUI/dante-astro-theme'
+            text: i18n.navigation.theme,
+            href: 'https://github.com/vikingmute/viking-astro-theme'
         }
     ],
     socialLinks: [
@@ -109,18 +110,11 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        // title: 'Hi There & Welcome to My Corner of the Web!',
-        text: "我叫 Viking, 是一名生活在上海的全栈开发工程师，也是一位自由职业者。 我创建了<a href='https://easycv.cn'>简单简历</a>, 五分钟打造程序员的金牌简历。 <a href='/about'>阅读更多...</a> ",
+        text: "我是一名热爱技术与创意的全栈开发者，专注于打造优雅高效的数字体验。平时喜欢探索新技术，研究开源项目，偶尔写写技术博客分享心得。我相信技术应该服务于人，而不是相反。<a href='/about'>了解更多...</a>",
         image: {
             src: '/avatar.jpg',
-            alt: 'A person sitting at a desk in front of a computer'
+            alt: 'Viking avatar'
         },
-        // actions: [
-        //     {
-        //         text: '关于我',
-        //         href: '/about'
-        //     }
-        // ]
     },
     subscribe: {
         title: 'Subscribe to Dante Newsletter',
@@ -129,7 +123,7 @@ const siteConfig: SiteConfig = {
     },
     postsPerPage: 8,
     projectsPerPage: 8,
-    locale: 'zh-CN',
+    locale,
     giscus: {
         repo: 'vikingmute/blog',
         repoId: 'MDEwOlJlcG9zaXRvcnkyMTMyNzkzOTk=',
@@ -140,7 +134,6 @@ const siteConfig: SiteConfig = {
         reactionsEnabled: '1',
         emitMetadata: '0',
         inputPosition: 'bottom',
-        theme: 'noborder_light'
     }
 };
 

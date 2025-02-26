@@ -3,10 +3,8 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/Button.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import PostPreview from '../../components/PostPreview.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { slugify } from '../../utils/common-utils';
-import { theme } from '../../store/theme';
 import { locales } from '../../i18n';
 import siteConfig from '../../data/site-config';
 
@@ -28,7 +26,7 @@ export async function getStaticPaths() {
 type Props = { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
 
 const { href } = Astro.url;
-const { post, prevPost, nextPost } = Astro.props;
+const { post } = Astro.props;
 const { title, publishDate, updatedDate, excerpt, tags = [], seo } = post.data;
 const { Content } = await render(post);
 ---
@@ -77,31 +75,48 @@ const { Content } = await render(post);
             </Button>
         </div>
     </article>
-    <section class="giscus mx-auto mt-10 w-full"></section>
+    <section class="giscus mx-auto mt-10 w-full" id="giscus-container"></section>
 </BaseLayout>
-<script
-    src="https://giscus.app/client.js"
-    data-repo={siteConfig.giscus.repo}
-    data-repo-id={siteConfig.giscus.repoId}
-    data-category={siteConfig.giscus.category}
-    data-category-id={siteConfig.giscus.categoryId}
-    data-mapping={siteConfig.giscus.mapping}
-    data-strict={siteConfig.giscus.strict}
-    data-reactions-enabled={siteConfig.giscus.reactionsEnabled}
-    data-emit-metadata={siteConfig.giscus.emitMetadata}
-    data-input-position={siteConfig.giscus.inputPosition}
-    data-theme={siteConfig.giscus.theme}
-    data-lang={siteConfig.locale}
-    crossorigin="anonymous"
-    async></script>
 <script>
     import { theme } from '../../store/theme';
     import { locales } from '../../i18n';
     import siteConfig from '../../data/site-config';
+    import { getGiscusLang } from '../../utils/common-utils';
 
     const i18n = locales[siteConfig.locale];
     let unsubscribe: (() => void) | null = null;
+    // 加载 Giscus 脚本
+    function loadGiscus() {
+        // 清除现有的 Giscus
+        const container = document.getElementById('giscus-container');
+        if (container) {
+            container.innerHTML = '';
+        }
 
+        // 获取当前主题
+        const currentTheme = theme.get();
+        const giscusTheme = currentTheme === 'dark' ? 'noborder_gray' : 'noborder_light';
+
+        // 创建 Giscus 脚本
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', siteConfig.giscus.repo);
+        script.setAttribute('data-repo-id', siteConfig.giscus.repoId);
+        script.setAttribute('data-category', siteConfig.giscus.category);
+        script.setAttribute('data-category-id', siteConfig.giscus.categoryId);
+        script.setAttribute('data-mapping', siteConfig.giscus.mapping);
+        script.setAttribute('data-strict', siteConfig.giscus.strict);
+        script.setAttribute('data-reactions-enabled', siteConfig.giscus.reactionsEnabled);
+        script.setAttribute('data-emit-metadata', siteConfig.giscus.emitMetadata);
+        script.setAttribute('data-input-position', siteConfig.giscus.inputPosition);
+        script.setAttribute('data-theme', giscusTheme);
+        script.setAttribute('data-lang', getGiscusLang(siteConfig.locale));
+        script.crossOrigin = 'anonymous';
+        script.async = true;
+
+        // 添加到容器
+        container?.appendChild(script);
+    }
     // 监听主题变化，更新 giscus 主题
     function updateGiscusTheme(theme: 'light' | 'dark') {
         const iframe = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
@@ -122,6 +137,8 @@ const { Content } = await render(post);
         if (unsubscribe) {
             unsubscribe();
         }
+        // 加载 Giscus
+        loadGiscus();
 
         const copyUrlButton = document.querySelector('.copy-url-button') as HTMLButtonElement;
         copyUrlButton?.addEventListener('click', async () => {

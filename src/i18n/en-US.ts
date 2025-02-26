@@ -1,5 +1,17 @@
 export default {
+    navigation: {
+        home: 'Home',
+        blog: 'Blog',
+        projects: 'Projects',
+        tags: 'Tags',
+        about: 'About',
+        contact: 'Contact',
+        theme: 'Theme'
+    },
     pages: {
+        home: {
+            viewAllPosts: 'View All Posts'
+        },
         tags: {
             title: 'All Tags',
             description: 'Explore tag directory for easy navigation and discovery.',

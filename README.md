@@ -1,4 +1,4 @@
-# Dante Fork - Enhanced Astro & Tailwind CSS Theme
+# Viking - Enhanced Astro & Tailwind CSS Theme
 
 A fork of Dante, a single-author blog and portfolio theme for Astro.js, with additional features and improvements. Original theme by [@JustGoodUI](https://justgoodui.com/).
 

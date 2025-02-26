@@ -1,5 +1,17 @@
 export default {
+    navigation: {
+        home: '首页',
+        blog: '博客',
+        projects: '作品',
+        tags: '标签',
+        about: '关于',
+        contact: '联系',
+        theme: '主题'
+    },
     pages: {
+        home: {
+            viewAllPosts: '查看全部文章'
+        },
         tags: {
             title: '所有标签',
             description: '浏览所有文章标签，找到您感兴趣的内容。',
