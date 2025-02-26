@@ -1,7 +1,7 @@
 import { locales } from '../i18n';
 
 // 使用默认语言的翻译
-const locale = 'en-US'; // 你的博客默认语言
+const locale = 'zh-CN'; // 你的博客默认语言
 const i18n = locales[locale];
 
 export type Image = {
@@ -110,7 +110,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        text: "我是一名热爱技术与创意的全栈开发者，专注于打造优雅高效的数字体验。平时喜欢探索新技术，研究开源项目，偶尔写写技术博客分享心得。我相信技术应该服务于人，而不是相反。<a href='/about'>了解更多...</a>",
+        text: "我是一名热爱技术与创意的全栈开发者。平时喜欢探索新技术，研究开源项目，偶尔写写技术博客分享心得。我相信技术应该服务于人，而不是相反。<a href='/about'>了解更多...</a>",
         image: {
             src: '/avatar.jpg',
             alt: 'Viking avatar'
