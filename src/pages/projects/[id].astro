@@ -5,6 +5,7 @@ import ProjectPreview from '../../components/ProjectPreview.astro';
 import { sortItemsByDateDesc } from '../../utils/data-utils';
 import { locales } from '../../i18n';
 import siteConfig from '../../data/site-config';
+import PostNavigation from '../../components/PostNavigation.astro';
 
 const i18n = locales[siteConfig.locale];
 
@@ -37,13 +38,11 @@ const { Content } = await render(project);
             <Content />
         </div>
     </article>
-    {
-        (prevProject || nextProject) && (
-            <div class="my-16 sm:my-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">{i18n.pages.projects.viewNext}</h2>
-                {nextProject && <ProjectPreview project={nextProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
-                {prevProject && <ProjectPreview project={prevProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
-            </div>
-        )
-    }
+    <PostNavigation
+        prevItem={prevProject}
+        nextItem={nextProject}
+        prevLabel={i18n.pages.projects.prevProject}
+        nextLabel={i18n.pages.projects.nextProject}
+        basePath="projects"
+    />
 </BaseLayout>

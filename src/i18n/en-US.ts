@@ -10,7 +10,10 @@ export default {
     },
     pages: {
         home: {
-            viewAllPosts: 'View All Posts'
+            viewAllPosts: 'View All Posts',
+            writing: 'Writing',
+            projects: 'Projects',
+            viewAllProjects: 'View All Projects'
         },
         tags: {
             title: 'All Tags',
@@ -27,7 +30,9 @@ export default {
             updated: 'Updated on',
             share: 'Share',
             copyLink: 'Copy link',
-            copied: 'Copied'
+            copied: 'Copied',
+            prevPost: 'Previous Post',
+            nextPost: 'Next Post'
         },
         error: {
             title: '404 Not Found',
@@ -38,7 +43,9 @@ export default {
         projects: {
             title: 'Projects',
             description: 'Explore a diverse portfolio showcasing my passion and expertise',
-            viewNext: 'View Next'
+            viewNext: 'View Next',
+            prevProject: 'Previous Project',
+            nextProject: 'Next Project'
         }
     },
     components: {
@@ -52,6 +59,9 @@ export default {
         post: {
             readMore: 'Read More',
             updated: 'Updated on'
+        },
+        project: {
+            viewProject: 'View Project'
         },
         date: {
             format: {

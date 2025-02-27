@@ -22,7 +22,7 @@ const hero = siteConfig.hero;
                         />
                     </figure>
                 )}
-                {hero.text && <div class="flex-1 min-w-0 prose prose-dante sm:prose-lg font-serif prose-p:text-base" set:html={marked.parse(hero.text)} />}
+                {hero.text && <div class="flex-1 min-w-0 prose prose-dante sm:prose-lg prose-p:text-base" set:html={marked.parse(hero.text)} />}
             </div>
             {hero.actions && hero.actions.length > 0 && (
                 <div class="flex flex-wrap gap-4">

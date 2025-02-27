@@ -1,0 +1,48 @@
+---
+import ArrowRight from '../icons/ArrowRight.astro';
+
+type Props = {
+    prevItem: any;
+    nextItem: any;
+    prevLabel: string;
+    nextLabel: string;
+    basePath: string;
+};
+
+const { prevItem, nextItem, prevLabel, nextLabel, basePath } = Astro.props;
+---
+
+<nav class="mb-16 sm:mb-24 border-t border-dashed pt-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-6">
+        {
+            prevItem && (
+                <a href={`/${basePath}/${prevItem.id}`} class="group flex-1 flex items-start gap-2">
+                    <div class="flex-shrink-0 mt-1">
+                        <ArrowRight class="fill-current w-4 h-4 transform rotate-180" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="text-sm text-muted mb-2">{prevLabel}</div>
+                        <div class="font-serif font-medium line-clamp-2 overflow-hidden text-ellipsis group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1">
+                            {prevItem.data.title}
+                        </div>
+                    </div>
+                </a>
+            )
+        }
+        {
+            nextItem && (
+                <a href={`/${basePath}/${nextItem.id}`} class="group flex-1 flex items-start gap-2 sm:flex-row-reverse sm:text-right">
+                    <div class="flex-shrink-0 mt-1">
+                        <ArrowRight class="fill-current w-4 h-4" />
+                    </div>
+                    <div class="flex-grow">
+                        <div class="text-sm text-muted mb-2">{nextLabel}</div>
+                        <div class="font-serif font-medium line-clamp-2 overflow-hidden text-ellipsis group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1">
+                            {nextItem.data.title}
+                        </div>
+                    </div>
+                </a>
+            )
+        }
+    </div>
+</nav>

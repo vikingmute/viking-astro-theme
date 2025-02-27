@@ -58,7 +58,7 @@ module.exports = {
                             textDecoration: 'underline',
                             textDecorationStyle: 'dashed',
                             textDecorationThickness: '1px',
-                            textUnderlineOffset: '2px',
+                            textUnderlineOffset: '4px',
                             '&:hover': {
                                 textDecorationStyle: 'solid'
                             }

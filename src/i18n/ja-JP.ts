@@ -10,7 +10,10 @@ export default {
     },
     pages: {
         home: {
-            viewAllPosts: 'すべての記事を見る'
+            viewAllPosts: 'すべての記事を見る',
+            writing: '記事',
+            projects: 'プロジェクト',
+            viewAllProjects: 'すべてのプロジェクトを見る'
         },
         tags: {
             title: 'すべてのタグ',
@@ -27,7 +30,9 @@ export default {
             updated: '更新日',
             share: 'シェア',
             copyLink: 'リンクをコピー',
-            copied: 'コピーしました'
+            copied: 'コピーしました',
+            prevPost: '前の記事',
+            nextPost: '次の記事'
         },
         error: {
             title: '404 見つかりません',
@@ -38,7 +43,9 @@ export default {
         projects: {
             title: 'プロジェクト',
             description: '私の情熱と専門知識を紹介する多様なポートフォリオを探索する',
-            viewNext: '次を見る'
+            viewNext: '次を見る',
+            prevProject: '前のプロジェクト',
+            nextProject: '次のプロジェクト'
         }
     },
     components: {
@@ -52,6 +59,9 @@ export default {
         post: {
             readMore: '続きを読む',
             updated: '更新日'
+        },
+        project: {
+            viewProject: 'プロジェクトを見る'
         },
         date: {
             format: {

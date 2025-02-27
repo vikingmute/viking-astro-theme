@@ -10,7 +10,10 @@ export default {
     },
     pages: {
         home: {
-            viewAllPosts: '查看全部文章'
+            viewAllPosts: '查看全部文章',
+            writing: '文章',
+            projects: '作品',
+            viewAllProjects: '查看全部作品'
         },
         tags: {
             title: '所有標籤',
@@ -27,7 +30,9 @@ export default {
             updated: '更新於',
             share: '分享',
             copyLink: '複製連結',
-            copied: '已複製'
+            copied: '已複製',
+            prevPost: '上一篇',
+            nextPost: '下一篇'
         },
         error: {
             title: '404 未找到',
@@ -38,7 +43,9 @@ export default {
         projects: {
             title: '作品',
             description: '探索展示我的熱情和專業知識的作品集',
-            viewNext: '查看下一個'
+            viewNext: '查看下一個',
+            prevProject: '上一個專案',
+            nextProject: '下一個專案'
         }
     },
     components: {
@@ -52,6 +59,9 @@ export default {
         post: {
             readMore: '閱讀更多',
             updated: '更新於'
+        },
+        project: {
+            viewProject: '查看專案'
         },
         date: {
             format: {
