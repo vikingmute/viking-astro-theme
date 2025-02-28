@@ -1,5 +1,4 @@
 ---
-import { theme, toggleTheme } from '../store/theme';
 import { locales } from '../i18n';
 import siteConfig from '../data/site-config';
 
@@ -23,9 +22,21 @@ const i18n = locales[siteConfig.locale];
 <script>
     import { theme } from '../store/theme';
 
+    // 监听主题变化
+    theme.subscribe((value) => {
+        if (value === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    });
+
+    // 视图转换后重新应用主题
     document.addEventListener('astro:after-swap', () => {
         if (theme.get() === 'dark') {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     });
 </script>

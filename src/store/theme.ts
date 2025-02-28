@@ -19,9 +19,5 @@ export function toggleTheme() {
     theme.set(newTheme);
     localStorage.setItem('theme', newTheme);
 
-    if (newTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
+    // 应用主题变化已经在 theme.subscribe 中处理
 } 
