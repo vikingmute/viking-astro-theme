@@ -22,6 +22,10 @@ export default {
             postCount: {
                 one: '記事',
                 other: '記事'
+            },
+            tagPage: {
+                title: 'タグ付き記事',
+                description: 'タグ付けされた記事のコレクションを探索する'
             }
         },
         blog: {

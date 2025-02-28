@@ -32,28 +32,62 @@ Featuring a minimal, slick, responsive and content-focused design with enhanced 
 - ✅ Chinese-friendly slugify function (converts Chinese characters to pinyin)
 - ✅ Redesigned Hero section with a more concise layout
 
-## Template Integrations
+## Configuration
 
-- @astrojs/tailwind - https://docs.astro.build/en/guides/integrations-guide/tailwind/
-- @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
-- @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
-- @astrojs/rss - https://docs.astro.build/en/guides/rss/
+### Setting the Language
+
+Viking supports multiple languages out of the box. You can set your preferred language in the `src/data/site-config.ts` file:
+
+```typescript
+const locale = 'zh-CN'; // Your blog's default language
+```
+
+Currently supported languages:
+- `en-US` (English)
+- `zh-CN` (Simplified Chinese)
+- `zh-TW` (Traditional Chinese)
+- `ja-JP` (Japanese)
+
+The language setting affects all UI elements, including navigation, buttons, and other interface text. Content in your blog posts and projects should be written in your target language.
+
+### Setting up Giscus Comments
+
+Viking comes with [Giscus](https://giscus.app/) integration for comments. To set it up:
+
+1. Go to [https://giscus.app/](https://giscus.app/) and follow the instructions to set up Giscus for your repository
+2. Update the Giscus configuration in `src/data/site-config.ts`:
+
+```typescript
+giscus: {
+    repo: 'yourusername/yourrepo',
+    repoId: 'YOUR_REPO_ID',
+    category: 'Blog Post Comments',
+    categoryId: 'YOUR_CATEGORY_ID',
+    mapping: 'pathname',
+    strict: '0',
+    reactionsEnabled: '1',
+    emitMetadata: '0',
+    inputPosition: 'bottom',
+}
+```
+
+Replace the values with those provided by the Giscus setup page. The comments section will automatically appear at the bottom of your blog posts.
 
 ## Project Structure
 
-Inside of Dante Astro theme, you'll see the following folders and files:
+Inside of Viking Astro theme, you'll see the following folders and files:
 
 ```text
 ├── public/
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── data/
-│   ├── icons/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
+│   ├── components/
+│   ├── content/
+│   ├── data/
+│   ├── icons/
+│   ├── layouts/
+│   ├── pages/
+│   ├── styles/
+│   └── utils/
 ├── astro.config.mjs
 ├── package.json
 ├── README.md
@@ -82,9 +116,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Want to learn more about Astro.js?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
 ## Credits
 
@@ -92,9 +123,6 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 - Demo content generate with [Chat GPT](https://chat.openai.com/)
 - Images for demo content from [Unsplash](https://unsplash.com/)
 
-## Astro Themes by Just Good UI
-
-- [Ovidius](https://github.com/JustGoodUI/ovidius-astro-theme) is a free single author blog theme.
 
 ## License
 

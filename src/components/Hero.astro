@@ -9,7 +9,7 @@ const hero = siteConfig.hero;
 {
     (hero?.title || hero?.image?.src || hero?.text || (hero?.actions && hero.actions.length > 0)) && (
         <section class="w-full flex flex-col gap-8 mb-8 sm:mb-16">
-            {hero.title && <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{hero.title}</h1>}
+            {hero.title && <h1 class="mb-12 text-2xl leading-tight font-serif font-bold sm:mb-16 sm:text-4xl">{hero.title}</h1>}
             <div class="flex gap-6  items-center">
                 {hero.image?.src && (
                     <figure class="flex-shrink-0">

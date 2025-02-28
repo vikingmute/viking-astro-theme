@@ -22,6 +22,10 @@ export default {
             postCount: {
                 one: '篇文章',
                 other: '篇文章'
+            },
+            tagPage: {
+                title: '標籤文章',
+                description: '瀏覽標籤下的精選文章集合'
             }
         },
         blog: {

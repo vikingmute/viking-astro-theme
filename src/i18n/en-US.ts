@@ -22,6 +22,10 @@ export default {
             postCount: {
                 one: 'post',
                 other: 'posts'
+            },
+            tagPage: {
+                title: 'Posts Tagged',
+                description: 'Explore a curated collection of blog posts under'
             }
         },
         blog: {
