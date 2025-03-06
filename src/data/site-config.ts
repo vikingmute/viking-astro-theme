@@ -42,6 +42,7 @@ export type SiteConfig = {
     postsPerPage?: number;
     projectsPerPage?: number;
     locale: 'zh-CN' | 'en-US' | 'zh-TW' | 'ja-JP';
+    enableExternalLinks?: boolean;
     giscus: {
         repo: string;
         repoId: string;
@@ -124,6 +125,7 @@ const siteConfig: SiteConfig = {
     postsPerPage: 8,
     projectsPerPage: 8,
     locale,
+    enableExternalLinks: true,
     giscus: {
         repo: 'vikingmute/blog',
         repoId: 'MDEwOlJlcG9zaXRvcnkyMTMyNzkzOTk=',

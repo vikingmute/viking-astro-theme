@@ -86,3 +86,30 @@
     width: 100% !important;
     min-width: 100% !important;
 }
+/* 外部链接样式 */
+.external-link {
+    /* 使用浏览器默认下划线，但自定义样式 */
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-style 0.2s ease;
+}
+
+.external-link:hover {
+    text-decoration-style: solid;
+}
+
+/* 内联SVG图标样式 */
+.inline-svg-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.2em;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.external-link:hover .inline-svg-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}

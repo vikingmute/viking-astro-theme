@@ -31,6 +31,7 @@ Featuring a minimal, slick, responsive and content-focused design with enhanced 
 - ✅ Noto Serif SC font for better multi-language support
 - ✅ Chinese-friendly slugify function (converts Chinese characters to pinyin)
 - ✅ Redesigned Hero section with a more concise layout
+- ✅ Configurable external link icons (can be enabled/disabled)
 
 ## Configuration
 
@@ -72,6 +73,16 @@ giscus: {
 ```
 
 Replace the values with those provided by the Giscus setup page. The comments section will automatically appear at the bottom of your blog posts.
+
+### Configuring External Link Icons
+
+Viking can automatically add an icon to external links in your content. You can enable or disable this feature in the `src/data/site-config.ts` file:
+
+```typescript
+enableExternalLinks: true, // Set to false to disable external link icons
+```
+
+When enabled, all external links in your Markdown/MDX content will display a small link icon and automatically open in a new tab with appropriate security attributes (`rel="noopener noreferrer"`). This helps users identify links that will take them away from your site.
 
 ## Project Structure
 
