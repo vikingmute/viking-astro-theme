@@ -32,6 +32,7 @@ Featuring a minimal, slick, responsive and content-focused design with enhanced 
 - ✅ Chinese-friendly slugify function (converts Chinese characters to pinyin)
 - ✅ Redesigned Hero section with a more concise layout
 - ✅ Configurable external link icons (can be enabled/disabled)
+- ✅ GitHub Flavored Markdown support (footnotes, tables, strikethrough, etc.)
 
 ## Configuration
 

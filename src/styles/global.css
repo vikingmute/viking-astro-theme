@@ -93,11 +93,16 @@
     text-decoration-style: dashed;
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
-    transition: text-decoration-style 0.2s ease;
+    transition: text-decoration-style 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 .external-link:hover {
     text-decoration-style: solid;
+}
+
+/* 暗黑模式下的外部链接样式调整 */
+html.dark .external-link {
+    text-decoration-color: rgb(var(--color-text-main) / 0.5); /* 降低暗模式下下划线的不透明度 */
 }
 
 /* 内联SVG图标样式 */
@@ -112,4 +117,85 @@
 .external-link:hover .inline-svg-icon {
     opacity: 1;
     transform: scale(1.1);
+}
+
+/* 暗黑模式下的SVG图标样式调整 */
+html.dark .inline-svg-icon {
+    opacity: 0.8; /* 略微提高暗模式下的不透明度，增强可见性 */
+}
+
+html.dark .external-link:hover .inline-svg-icon {
+    opacity: 1;
+}
+
+/* 脚注引用样式 */
+a[data-footnote-ref] {
+  font-size: 0.75em;
+  vertical-align: super;
+  margin-left: 1px;
+  color: rgb(var(--color-text-main));
+  text-decoration: none;
+  background-color: rgb(var(--color-bg-muted));
+  padding: 0 3px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+a[data-footnote-ref]:hover {
+  background-color: rgb(var(--color-border-main) / 0.1);
+}
+
+/* 脚注返回链接样式 - 替代方法 */
+a[data-footnote-backref] {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background-color: rgb(var(--color-bg-muted));
+  transition: background-color 0.2s ease;
+  font-size: 0; /* 隐藏原始文本 */
+  position: relative;
+}
+
+a[data-footnote-backref]:hover {
+  background-color: rgb(var(--color-border-main) / 0.1);
+}
+
+/* 使用内容属性直接插入SVG */
+a[data-footnote-backref]::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23141413' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 14L4 9l5-5'/%3E%3Cpath d='M20 20v-7a4 4 0 0 0-4-4H4'/%3E%3C/svg%3E");
+  display: block;
+}
+
+/* 暗模式下的图标 */
+html.dark a[data-footnote-backref]::before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23F2F1EC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 14L4 9l5-5'/%3E%3Cpath d='M20 20v-7a4 4 0 0 0-4-4H4'/%3E%3C/svg%3E");
+}
+
+/* 脚注区域样式 */
+.footnotes {
+  margin-top: 2rem;
+  border-top: 1px solid rgb(var(--color-border-main) / 0.2);
+  padding-top: 1rem;
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+/* 脚注列表样式 */
+.footnotes ol {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.footnotes li {
+  margin-bottom: 0.3rem;
+  padding-left: 0.5rem;
+}
+
+/* 脚注段落样式 */
+.footnotes li p {
+  margin: 0.3rem 0;
 }

@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import rehypeExternalLinks from 'rehype-external-links';
 import siteConfig from './src/data/site-config';
+import remarkGfm from 'remark-gfm';
 
 // 根据配置决定是否使用 rehypeExternalLinks 插件
 const rehypePlugins = [];
@@ -36,6 +37,7 @@ export default defineConfig({
         })
     ],
     markdown: {
+        remarkPlugins: [remarkGfm],
         rehypePlugins
     }, 
 });
